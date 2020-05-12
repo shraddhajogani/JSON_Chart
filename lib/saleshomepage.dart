@@ -42,11 +42,11 @@ class _SalesHomePageState extends State<SalesHomePage> {
               ),
             );
           } else {
-
-            List<Sales> sales = sanpshot.data.documents.map((documentSnapshot) => Sales.fromMap(documentSnapshot.data))
+            List<Sales> sales = sanpshot.data.documents
+                .map((documentSnapshot) => Sales.fromMap(documentSnapshot.data))
                 .toList();
 
-            return _buildChart(context,sales);
+            return _buildChart(context, sales);
           }
         },
       ),
@@ -59,22 +59,20 @@ Widget _buildChart(BuildContext context, List<Sales> sales) {
   _generateData(myData);
   return Padding(
     padding: EdgeInsets.all(8.0),
-    child: Container(child:
-      Center(
+    child: Container(
+      child: Center(
         child: Column(
           children: <Widget>[
             Text('Sales By Year'),
             Expanded(
-                child: charts.BarChart(_seriesBarData,
-
-                )
-            ),
+                child: charts.BarChart(
+              _seriesBarData,
+            )),
           ],
         ),
       ),
     ),
   );
-
 }
 
 class Sales {
